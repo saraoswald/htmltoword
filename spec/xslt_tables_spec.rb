@@ -621,8 +621,6 @@ describe "XSLT for tables" do
           <w:r>
             <w:rPr>
               <w:i/>
-            </w:rPr>
-            <w:rPr>
               <w:b/>
             </w:rPr>
             <w:t xml:space="preserve"> and strong em </w:t>

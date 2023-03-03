@@ -302,19 +302,44 @@
   <xsl:template match="text()">
     <xsl:if test="string-length(.) > 0">
       <w:r>
-        <xsl:if test="ancestor::i">
+        <xsl:if test="ancestor::i and not(ancestor::b) and not(ancestor::u)">
           <w:rPr>
             <w:i />
           </w:rPr>
         </xsl:if>
-        <xsl:if test="ancestor::b">
+        <xsl:if test="ancestor::b and not(ancestor::i) and not(ancestor::u)">
           <w:rPr>
             <w:b />
           </w:rPr>
         </xsl:if>
-        <xsl:if test="ancestor::u">
+        <xsl:if test="ancestor::i and ancestor::b and not(ancestor::u)">
+          <w:rPr>
+            <w:i />
+            <w:b />
+          </w:rPr>
+        </xsl:if>
+        <xsl:if test="ancestor::u and not(ancestor::b) and not(ancestor::i)">
           <w:rPr>
             <w:u w:val="single"/>
+          </w:rPr>
+        </xsl:if>
+        <xsl:if test="ancestor::u and ancestor::b">
+          <w:rPr>
+            <w:u w:val="single"/>
+            <w:b />
+          </w:rPr>
+        </xsl:if>
+        <xsl:if test="ancestor::u and ancestor::i">
+          <w:rPr>
+            <w:u w:val="single"/>
+            <w:i />
+          </w:rPr>
+        </xsl:if>
+        <xsl:if test="ancestor::u and ancestor::i and ancestor::b">
+          <w:rPr>
+            <w:u w:val="single"/>
+            <w:i />
+            <w:b />
           </w:rPr>
         </xsl:if>
         <xsl:if test="ancestor::s">
